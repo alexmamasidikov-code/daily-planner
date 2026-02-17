@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, useRef, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {

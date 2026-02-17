@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, useCallback, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Pill, Check, Plus } from 'lucide-react'

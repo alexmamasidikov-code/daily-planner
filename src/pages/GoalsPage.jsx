@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, useCallback, memo } from 'react'
 import { motion } from 'framer-motion'
 import { Target, Flame, Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react'

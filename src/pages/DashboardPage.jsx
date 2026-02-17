@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, memo, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -22,20 +21,13 @@ function DashboardPage({ onNav }) {
 
   useEffect(() => {
     let cancelled = false
-    const todayStr = today()
     Promise.all([
       statsApi.get().catch(() => null),
       ritualsApi.todayProgress().catch(() => ({ total: 0, completed: 0 })),
       tmApi.get().catch(() => ({ current_level: 0, level_name: 'Sleep', xp_current: 0, level_progress: 0, xp_needed: 100 })),
       deepworkApi.stats().catch(() => ({ today_minutes: 0, week_minutes: 0, avg_focus_score: 0 })),
       nutritionApi.dailySummary().catch(() => ({ total_calories: 0, total_protein: 0, targets: { calories: 2000, protein: 170 } })),
-      plansApi.get(todayStr)
-        .catch(() => null)
-        .then(async (plan) => {
-          if (plan) return plan
-          const list = await plansApi.list().catch(() => [])
-          return list?.length ? list[0] : null
-        }),
+      plansApi.get(today()).catch(() => null),
       goalsApi.list().catch(() => []),
     ]).then(([stats, rituals, tm, dw, nutrition, plan, goals]) => {
       if (!cancelled) setData({ stats, rituals, tm, dw, nutrition, plan, goals })

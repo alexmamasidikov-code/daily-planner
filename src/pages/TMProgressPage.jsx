@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, memo } from 'react'
 import { motion } from 'framer-motion'
 import { Award } from 'lucide-react'
