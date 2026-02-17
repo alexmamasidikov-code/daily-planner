@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   Daily Planner — exact copy from my-app localhost:3000/planner
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --planner-bg: #0C0C0C;
+  --planner-card: #1B1B1B;
+  --planner-surface: #252525;
+  --planner-border: rgba(255, 255, 255, 0.08);
+  --planner-accent: #7B61FF;
+  --planner-text: #FFFFFF;
+  --planner-text-secondary: #9CA3AF;
+  --planner-text-muted: #6B7280;
+  --planner-radius: 16px;
+  --planner-radius-sm: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Geist Variable', 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--planner-bg);
+  color: var(--planner-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.planner-theme .glass-card,
+.glass-card {
+  background: var(--planner-card);
+  border-radius: var(--planner-radius);
+  border: 1px solid var(--planner-border);
+}
+
+.planner-theme .glass-input,
+.glass-input {
+  background: var(--planner-surface);
+  border: 1px solid var(--planner-border);
+  color: var(--planner-text);
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--planner-radius-sm);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planner-theme .glass-input:focus,
+.glass-input:focus {
+  border-color: var(--planner-accent);
+  box-shadow: 0 0 0 3px rgba(123, 97, 255, 0.25);
+}
+
+.glass-input::placeholder {
+  color: var(--planner-text-muted);
+}
+
+.planner-theme .glass-btn,
+.glass-btn {
+  background: var(--planner-surface);
+  border: 1px solid var(--planner-border);
+  color: var(--planner-text);
+  padding: 12px 24px;
+  border-radius: var(--planner-radius-sm);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.planner-theme .glass-btn-primary,
+.glass-btn-primary {
+  background: linear-gradient(135deg, #7B61FF, #A855F7);
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  background: var(--planner-surface);
+  border-radius: 6px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7B61FF, #A855F7);
+  cursor: pointer;
+}
+
+.planner-theme .text-gradient,
+.text-gradient {
+  background: linear-gradient(135deg, #7B61FF, #A855F7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes planner-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.planner-theme .animate-pulse,
+.animate-pulse {
+  animation: planner-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* Select */
+select.glass-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+textarea.glass-input { resize: none; line-height: 1.6; }
